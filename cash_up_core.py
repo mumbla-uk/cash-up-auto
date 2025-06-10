@@ -149,10 +149,10 @@ def run_automation():
             # Select 'INBOX' and search for UNSEEN messages
             # This is crucial for processing unique emails only
             client.select_folder('INBOX')
-            messages = client.search(['UNSEEN', 'FROM', CASH_UP_SENDER_EMAIL, 'SUBJECT', EMAIL_SUBJECT])
+            messages = client.search(['UNSEEN', 'FROM', 'SUBJECT', EMAIL_SUBJECT])
 
             if not messages:
-                status_messages.append(f"No *UNSEEN* emails found with subject '{EMAIL_SUBJECT}' from '{CASH_UP_SENDER_EMAIL}'.")
+                status_messages.append(f"No *UNSEEN* emails found with subject '{EMAIL_SUBJECT}'.")
                 status_messages.append("This means all matching emails have already been processed.")
                 status_messages.append("If you want to re-process, you'll need to manually mark them as unread in Gmail.")
                 return "No New Emails", status_messages # Changed status for clarity
