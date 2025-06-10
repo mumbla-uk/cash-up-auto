@@ -12,7 +12,6 @@ st.markdown("Click the button below to fetch the latest cash up summary email an
 try:
     GMAIL_USER = st.secrets["GMAIL_USER"]
     GMAIL_APP_PASSWORD = st.secrets["GMAIL_APP_PASSWORD"]
-    # CASH_UP_SENDER_EMAIL is no longer loaded or used here
     EMAIL_SUBJECT = st.secrets["EMAIL_SUBJECT"]
 except KeyError as e:
     st.error(f"Error loading secrets: {e}. Please ensure your `.streamlit/secrets.toml` file is correctly configured with GMAIL_USER, GMAIL_APP_PASSWORD, and EMAIL_SUBJECT.")
