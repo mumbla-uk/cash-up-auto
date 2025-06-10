@@ -149,7 +149,7 @@ def run_automation():
             # Select 'INBOX' and search for UNSEEN messages
             # This is crucial for processing unique emails only
             client.select_folder('INBOX')
-            messages = client.search('UNSEEN', 'SUBJECT', 'Cash Up Summary')
+            messages = client.search(['UNSEEN', 'SUBJECT', 'Cash Up Summary'])
 
             if not messages:
                 status_messages.append(f"No *UNSEEN* emails found with subject '{EMAIL_SUBJECT}'.")
@@ -174,7 +174,7 @@ def run_automation():
                 status_messages.append(f"Data added to {EXCEL_FILE_NAME} in sheet: {datetime.strptime(parsed_data.get('Date', ''), '%Y-%m-%d').strftime('%Y-%m') if parsed_data.get('Date') else 'N/A'}")
 
                 # Mark the processed email as 'seen' (read) so it's not processed again
-                client.add_flags(messages[-1], ['\Seen'])
+                client.add_flags(messages[-1], [b'\\Seen'])
                 status_messages.append("Email marked as seen in Gmail.")
 
                 return "Success", status_messages
