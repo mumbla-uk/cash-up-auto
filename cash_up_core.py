@@ -149,7 +149,7 @@ def run_automation():
             # Select 'INBOX' and search for UNSEEN messages
             # This is crucial for processing unique emails only
             client.select_folder('INBOX')
-            messages = client.search(['UNSEEN', 'FROM', 'SUBJECT', EMAIL_SUBJECT])
+            messages = client.search('UNSEEN', 'SUBJECT', 'Cash Up Summary')
 
             if not messages:
                 status_messages.append(f"No *UNSEEN* emails found with subject '{EMAIL_SUBJECT}'.")
