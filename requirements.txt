@@ -1,0 +1,4 @@
+streamlit
+imapclient
+openpyxl
+beautifulsoup4
